@@ -41,12 +41,14 @@ export const Td = styled.td`
 
     @media (max-width: 500px){
         ${( props ) => props.onlyWeb && "display: none"}
-    }
-
-    
+    }    
 `;
 
-const Grid = ({ users }) => {
+const Grid = ({ users, setUsers, setOnEdit,  }) => {
+
+    const handleEdit = (item) => {
+        setOnEdit(item);
+    }
 
     const handleDelete = async (id) => {
         await axios
@@ -78,8 +80,8 @@ const Grid = ({ users }) => {
                         <Td >{item.nome}</Td>
                         <Td >{item.email}</Td>
                         <Td className="buttons">
-                            <FaEdit />
-                            <FaTrash onClick={ ()=> handleDelete(item.id) } />
+                            <FaEdit onClick={ () => handleEdit(item.id)} />
+                            <FaTrash onClick={ () => handleDelete(item.id)} />
                         </Td>
                     </Tr>
                     ))

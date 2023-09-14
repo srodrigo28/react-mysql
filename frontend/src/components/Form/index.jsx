@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const FormContainer = styled.form`
     display: flex;
@@ -42,8 +42,40 @@ const Button = styled.button`
 const Form = ( { onEdit } ) => {
     const ref = useRef();
 
+    useEffect( () => {
+        if(onEdit) {
+            const user = ref.current;
+
+            user.nome.value = onEdit.nome;
+            user.email.value = onEdit.email;
+        }
+    }, [onEdit]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const user = ref.current;
+
+        if(
+            !user.nome.value ||
+            !user.email.value
+        ){
+            return alert("Preencher todos os campos!");
+        }
+
+        if(onEdit){
+            await axios
+            .put("http://localhost:8800/users/" + onEdit.id, {
+                nome: user.nome.value,
+                email: user.email.value
+            })
+            .then(( {data }) => alert(data))
+            .catch(( {data }) => console.log(data));
+        }
+    }
+
     return(
-        <FormContainer ref={ref}>
+        <FormContainer ref={ref} onSubmit={handleSubmit}>
             <InputArea>
                 <Label>Nome</Label>
                 <Input name="nome" />
