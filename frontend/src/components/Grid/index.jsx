@@ -58,11 +58,11 @@ const Grid = ({ users, setUsers, setOnEdit,  }) => {
                 const newArray = users.filter((user) => user.id !== id);
 
                 setUsers(newArray);
-                console.log(data);
+                // console.log(data);
             })
             .catch( ({ data }) => console.log(data));
 
-            // setOnEdit(null);
+        setOnEdit(null);
     }
 
     console.log("grid console: " + users.data);
@@ -80,7 +80,7 @@ const Grid = ({ users, setUsers, setOnEdit,  }) => {
                         <Td >{item.nome}</Td>
                         <Td >{item.email}</Td>
                         <Td className="buttons">
-                            <FaEdit onClick={ () => handleEdit(item.id)} />
+                            <FaEdit onClick={ () => handleEdit(item)} />
                             <FaTrash onClick={ () => handleDelete(item.id)} />
                         </Td>
                     </Tr>

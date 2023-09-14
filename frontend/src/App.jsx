@@ -22,7 +22,7 @@ const Title = styled.h2``;
 function App() {
   const [users, setUsers] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
-  const url = "http://localhost:8800/";
+  const url = "http://localhost:8800/users";
 
   const getUsers = async () => {
     try{

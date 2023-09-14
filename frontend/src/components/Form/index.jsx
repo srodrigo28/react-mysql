@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useRef } from "react";
+import axios from "axios";
 
 const FormContainer = styled.form`
     display: flex;
@@ -39,7 +40,7 @@ const Button = styled.button`
 `;
 
 
-const Form = ( { onEdit } ) => {
+const Form = ( { getUsers, onEdit, setOnEdit } ) => {
     const ref = useRef();
 
     useEffect( () => {
@@ -56,23 +57,33 @@ const Form = ( { onEdit } ) => {
 
         const user = ref.current;
 
-        if(
-            !user.nome.value ||
-            !user.email.value
-        ){
+        if (!user.nome.value || !user.email.value) {
             return alert("Preencher todos os campos!");
         }
 
-        if(onEdit){
+        if (onEdit) {
             await axios
-            .put("http://localhost:8800/users/" + onEdit.id, {
-                nome: user.nome.value,
-                email: user.email.value
-            })
-            .then(( {data }) => alert(data))
-            .catch(( {data }) => console.log(data));
+                .put("http://localhost:8800/users/" + onEdit.id, {
+                    nome: user.nome.value,
+                    email: user.email.value
+                })
+                .then(({ data }) => alert(data))
+                .catch(({ data }) => console.log(data));
+        } else {
+            await axios
+                .post("http://localhost:8800/users/", {
+                    nome: user.nome.value,
+                    email: user.email.value
+                })
+                .then(({ data }) => alert(data))
+                .catch(({ data }) => console.log(data));
         }
-    }
+        user.nome.value = "";
+        user.email.value = "";
+
+        setOnEdit(null);
+        getUsers();
+    };
 
     return(
         <FormContainer ref={ref} onSubmit={handleSubmit}>
