@@ -22,7 +22,7 @@ const Title = styled.h2``;
 function App() {
   const [users, setUsers] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
-  const url = "http://localhost:8800/users";
+  const url = "http://localhost:8800/";
 
   const getUsers = async () => {
     try{
@@ -42,7 +42,7 @@ function App() {
     <Container>
         <Title>Usuários</Title>
         <Form />
-        <Grid users={users} />
+        <Grid users={users} setUsers={setUsers} />
     </Container>
     
       <GlobalStyles />
