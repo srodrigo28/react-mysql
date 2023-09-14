@@ -26,14 +26,14 @@ export const addUser = (req, res) => {
 };
 
 export const updateUser = (req, res) => {
-    const q = "UPDATE usuarios SET nome = ?, email = ?, WHERE id = ?";
+    const q = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
 
     const values = [
         req.body.nome,
         req.body.email
     ];
 
-    db.query(q, [...values, req.param.id], (err) => {
+    db.query(q, [...values, req.params.id], (err) => {
         if(err) return res.json(err);
 
         return res.status(200).json("Alterado com sucesso.");
@@ -41,7 +41,7 @@ export const updateUser = (req, res) => {
 };
 
 export const deleteUser = (req, res) => {
-    const q = "DELETE FROM usuarios WHERE `id` = ? ";
+    const q = "DELETE FROM usuarios WHERE id = ? ";
 
     db.query(q, [req.param.id], (err) => {
         if(err) return res.json(err);
