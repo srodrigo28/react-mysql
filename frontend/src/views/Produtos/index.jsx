@@ -13,11 +13,10 @@ export function Produtos() {
             .catch(error => {
                 console.log("Error: " + error);
             })
-    }, [])
+    }, [produtos])
 
     return (
         <div className="container">
-            <h1 className="text-center mt-5 mb-3">Página de Produtos</h1>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -28,7 +27,7 @@ export function Produtos() {
                 </thead>
                 <tbody>
                     {   produtos.map((item, i) => (
-                            <tr key={i}>
+                            <tr key={i} className="overflow-y-auto">
                                 <td >{item.nome}</td>
                                 <td >{item.quantidade}</td>
                                 <td>{item.valor}</td>

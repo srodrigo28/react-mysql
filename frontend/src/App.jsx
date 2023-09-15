@@ -12,7 +12,7 @@ function App() {
         <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/admin/produtos" element={<ProdutosAdmin />} />
-        <Route path="/admin/produtos/novo" element={ <FormProduto /> } />
+        <Route path="/admin" element={ <FormProduto /> } />
       </Routes>
     </BrowserRouter>
   );
