@@ -21,7 +21,7 @@ export const addUser = (req, res) => {
     db.query(q, [values], (err) => {
         if(err) return res.json(err);
 
-        return res.status(201).json("Inserido com sucesso");
+        return res.status(201).json("Inserido com sucesso:  " +  values[0]);
     });
 };
 

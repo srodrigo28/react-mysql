@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 export function Produtos() {
     const [produtos, setProdutos] = useState([]);
@@ -23,6 +24,7 @@ export function Produtos() {
                         <th>Nome</th>
                         <th>Quantidade</th>
                         <td>Valor</td>
+                        <td>Ações</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +33,13 @@ export function Produtos() {
                                 <td >{item.nome}</td>
                                 <td >{item.quantidade}</td>
                                 <td>{item.valor}</td>
+                                <td>
+                                <Link
+                                    to={`http://localhost:5173/admin/${item.id}`}
+                                    className="btn btn-outline-warning"
+                                >Editar</Link>
+                                    <button className="btn btn-outline-danger">Apagar</button>
+                                </td>
                             </tr>
                         ))
                     }

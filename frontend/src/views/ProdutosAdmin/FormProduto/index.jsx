@@ -1,22 +1,30 @@
 import axios from "axios";
-import { useRef } from "react";
-import { Produtos } from "../../Produtos";
+import { useState } from "react";
 
 export function FormProduto() {
-    const ref = useRef();
     const url = "http://localhost:8800/produtos";
+
+    const [nome, setNome] = useState('');
+    const [qtd, setQtd] = useState('');
+    const [valor, setValor] = useState('');
+
+    const cadastro = () => {
+        return {
+            setNome(nome),
+            setQtd(qtd),
+            setValor(valor),
+        }
+    }
 
     const aoSubmeterForm = (evento) => {
         evento.preventDefault();
-        const produto = ref.current;
-
         axios.post(url, {
-            nome:       produto.name.value,
-            valor:      produto.valor.value,
-            quantidade: produto.qtd.value
-        }).then(() => {
+            cadastro
+        })
+        .then(() => {
             alert("Cadastrado com sucesso")
-        }).catch(error => {
+        })
+        .catch(error => {
           console.log(error)
         })
     }
@@ -24,16 +32,24 @@ export function FormProduto() {
     return (
         <div className="container">
             <h1>Cadastro Novo Produto</h1>
-            <form ref={ref} onSubmit={aoSubmeterForm} className="mb-5 flex-nowrap">
-                <div className="row input-group">
-                    <input type="text" name="name"  placeholder="nome"       className="form-control"   />
-                    <input type="text" name="qtd"   placeholder="quantidade" className="form-control"   />
-                    <input type="text" name="valor" placeholder="valor"      className="form-control"   />
-                    <button className="form-control col-2 btn btn-success mr-2">Salvar</button>
-                </div>
+            <form onSubmit={aoSubmeterForm}>
+                <input
+                    type="text"
+                    placeholder="nome"
+                    value={nome} onChange={e => setNome(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="quantidade"
+                    value={qtd} onChange={ e => setQtd(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="valor"
+                    value={valor} onChange={ e => setValor(e.target.value )}
+                />
+                <button>Salvar</button>
             </form>
-
-            <Produtos />
         </div>
     )
 }

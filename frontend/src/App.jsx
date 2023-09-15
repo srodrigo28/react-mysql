@@ -13,6 +13,7 @@ function App() {
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/admin/produtos" element={<ProdutosAdmin />} />
         <Route path="/admin" element={ <FormProduto /> } />
+        <Route path="/admin/:id" element={ <FormProduto /> } />
       </Routes>
     </BrowserRouter>
   );
