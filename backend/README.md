@@ -9,24 +9,20 @@ npm run api
 ```
 
 ### EndPoints Users
-* Cadastrar :: POST
-```
-http://localhost:8800/users
-```
-
-* Listar :: GET
-```
-http://localhost:8800/users
+``` * Cadastrar :: POST
+http://localhost:8080/users
 ```
 
-* Alterar :: PUT
-```
-http://localhost:8800/users/8
+``` * Listar :: GET
+http://localhost:8080/users
 ```
 
-* Apagar :: DELETE
+``` * Alterar :: PUT
+http://localhost:8080/users/8
 ```
-http://localhost:8800/users/8
+
+``` * Apagar :: DELETE
+http://localhost:8080/users/8
 ```
 
 ### EndPoints Produtos

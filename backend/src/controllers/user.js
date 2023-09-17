@@ -1,5 +1,6 @@
 import { db } from '../db.js';
 
+// Listar
 export const getUsers = (_, res) => {
     const q = "SELECT * FROM usuarios";
 
@@ -10,6 +11,7 @@ export const getUsers = (_, res) => {
     });
 };
 
+// Adicionar
 export const addUser = (req, res) => {
     const q = "INSERT INTO usuarios(nome, email) VALUES(?)";
 
@@ -25,6 +27,7 @@ export const addUser = (req, res) => {
     });
 };
 
+// Atualizar
 export const updateUser = (req, res) => {
     const q = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
 
@@ -40,6 +43,7 @@ export const updateUser = (req, res) => {
     });
 };
 
+// Apagar
 export const deleteUser = (req, res) => {
     const q = "DELETE FROM usuarios WHERE id = ?";
 
