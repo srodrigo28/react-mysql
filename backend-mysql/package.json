@@ -1,0 +1,19 @@
+{
+  "name": "crud-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "api": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Sebastião Rodrigo",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "4.18.1",
+    "mysql": "2.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
