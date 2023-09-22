@@ -1,0 +1,13 @@
+{
+    "produto": [
+        { "id": 1, "nome": "arroz",  "qtd": 10, "valor": 19 },
+        { "id": 2, "nome": "feijão", "qtd":  7, "valor": 9 },
+        { "id": 3, "nome": "açucar", "qtd": 13, "valor": 16 }
+    ],
+
+    "usuario": [
+        { "id": 1, "nome": "admin",    "email": "email@default.com" },
+        { "id": 2, "nome": "vendedor", "email": "email@default.com" },
+        { "id": 3, "nome": "gerente",  "email": "email@default.com" }
+    ]
+}

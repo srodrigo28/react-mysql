@@ -1,0 +1,11 @@
+.col{
+    gap: 20px;
+    display: flex;
+}
+.btn1{
+    width: 120px !important;
+}
+.gap-space{
+    gap: 5px;
+    display: flex;
+}
